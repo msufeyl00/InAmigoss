@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InAmigos - Making a Difference Together</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            opacity: 0.8;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 5rem 2rem;
+            text-align: center;
+            min-height: 500px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 600;
+        }
+
+        .btn-primary {
+            background-color: #fff;
+            color: #667eea;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background-color: white;
+            color: #667eea;
+            transform: translateY(-3px);
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* About Section */
+        .about {
+            padding: 5rem 0;
+            background-color: white;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text h2,
+        .projects h2,
+        .impact h2 {
+            font-size: 2.5rem;
+            color: #667eea;
+            margin-bottom: 2rem;
+            font-weight: 700;
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        .about-image {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            height: 300px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        /* Projects Section */
+        .projects {
+            padding: 5rem 0;
+            background-color: white;
+        }
+
+        .projects h2 {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-top: 5px solid #667eea;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .project-image {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+        }
+
+        .project-content {
+            padding: 2rem;
+        }
+
+        .project-content h3 {
+            color: #667eea;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .project-content p {
+            color: #666;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+
+        /* Impact Section */
+        .impact {
+            padding: 5rem 0;
+            background-color: white;
+        }
+
+        .impact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .impact-image {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            height: 300px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            font-weight: 600;
+            order: 2;
+        }
+
+        .impact-text {
+            order: 1;
+        }
+
+        .impact-text p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        .impact-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .stat {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.95rem;
+        }
+
+        /* Call to Action Section */
+        .cta {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+            border-radius: 10px;
+            margin: 5rem 0;
+        }
+
+        .cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        .cta p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .btn-cta {
+            background-color: white;
+            color: #667eea;
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 600;
+        }
+
+        .btn-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            opacity: 0.9;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-sections {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+            text-align: left;
+        }
+
+        .footer-section h4 {
+            margin-bottom: 1.5rem;
+            color: #667eea;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: #bbb;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.5rem;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: #667eea;
+        }
+
+        .social-links {
+            margin-bottom: 3rem;
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .social-links a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-color: #667eea;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            margin: 0 0.5rem;
+            color: white;
+            transition: background-color 0.3s;
+        }
+
+        .social-links a:hover {
+            background-color: #764ba2;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #444;
+            padding-top: 2rem;
+            color: #999;
+            font-size: 0.95rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero-buttons,
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .about-content,
+            .impact-content {
+                grid-template-columns: 1fr;
+            }
+
+            .impact-image {
+                order: 1;
+            }
+
+            .impact-text {
+                order: 2;
+            }
+
+            .impact-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-sections {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <header>
+        <nav>
+            <div class="logo">🌍 InAmigos</div>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#impact">Impact</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Making a Difference Together</h1>
+        <p>InAmigos is committed to creating sustainable change through community-driven initiatives</p>
+        <div class="hero-buttons">
+            <button class="btn btn-primary">Get Involved</button>
+            <button class="btn btn-secondary">Learn More</button>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>About InAmigos</h2>
+                    <p>
+                        InAmigos is a dedicated non-governmental organization working towards social development and community empowerment. Our mission is to create a positive impact on society by addressing critical social issues through collaborative and innovative solutions.
+                    </p>
+                    <p>
+                        Founded on the principles of transparency, accountability, and community participation, we work with local communities, government bodies, and international partners to bring sustainable change. Every project we undertake is designed to improve the lives of marginalized communities and create long-lasting positive outcomes.
+                    </p>
+                    <p>
+                        Our team comprises dedicated professionals, volunteers, and community leaders who share a common vision of a better world. #InAmigos represents not just an organization, but a movement of compassionate individuals working together for social good.
+                    </p>
+                </div>
+                <div class="about-image">
+                    🤝 Community Unity & Collaboration
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="projects" id="projects">
+        <div class="container">
+            <h2>Our Ongoing Projects</h2>
+            <div class="projects-grid">
+                <!-- Project 1 -->
+                <div class="project-card">
+                    <div class="project-image">📚</div>
+                    <div class="project-content">
+                        <h3>Education Access Initiative</h3>
+                        <p>
+                            We provide quality education and learning resources to underprivileged children. Our program focuses on basic literacy, numeracy, and digital skills to empower the next generation.
+                        </p>
+                        <strong>Status:</strong> Active | <strong>Reach:</strong> 5,000+ Students
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-card">
+                    <div class="project-image">🏥</div>
+                    <div class="project-content">
+                        <h3>Healthcare & Wellness Program</h3>
+                        <p>
+                            Providing accessible healthcare services to remote and underserved communities. We conduct medical camps, awareness programs, and health checkups.
+                        </p>
+                        <strong>Status:</strong> Active | <strong>Reach:</strong> 8,000+ Beneficiaries
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-card">
+                    <div class="project-image">🌱</div>
+                    <div class="project-content">
+                        <h3>Environmental Conservation</h3>
+                        <p>
+                            Dedicated to protecting our environment through tree plantation, waste management, and sustainable living awareness programs.
+                        </p>
+                        <strong>Status:</strong> Active | <strong>Reach:</strong> 10,000+ Trees Planted
+                    </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="project-card">
+                    <div class="project-image">💼</div>
+                    <div class="project-content">
+                        <h3>Skill Development & Employment</h3>
+                        <p>
+                            Empowering youth with vocational training and employment opportunities. We provide skills training in various sectors to create economic independence.
+                        </p>
+                        <strong>Status:</strong> Active | <strong>Reach:</strong> 3,500+ Trained Individuals
+                    </div>
+                </div>
+
+                <!-- Project 5 -->
+                <div class="project-card">
+                    <div class="project-image">👩‍👧‍👦</div>
+                    <div class="project-content">
+                        <h3>Women Empowerment Program</h3>
+                        <p>
+                            Promoting gender equality through education, self-help groups, and economic empowerment initiatives for women in underserved areas.
+                        </p>
+                        <strong>Status:</strong> Active | <strong>Reach:</strong> 4,000+ Women Beneficiaries
+                    </div>
+                </div>
+
+                <!-- Project 6 -->
+                <div class="project-card">
+                    <div class="project-image">🎓</div>
+                    <div class="project-content">
+                        <h3>Scholarship & Mentorship</h3>
+                        <p>
+                            Offering scholarships and mentoring to deserving students from underprivileged backgrounds, helping them achieve their educational goals.
+                        </p>
+                        <strong>Status:</strong> Active | <strong>Reach:</strong> 1,500+ Scholars
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact Section -->
+    <section class="impact" id="impact">
+        <div class="container">
+            <div class="impact-content">
+                <div class="impact-image">
+                    📊 Measuring Our Impact
+                </div>
+                <div class="impact-text">
+                    <h2>Our Social Impact</h2>
+                    <p>
+                        InAmigos has made significant strides in bringing positive change to thousands of lives. Our data-driven approach ensures that every initiative creates measurable and sustainable impact in the communities we serve.
+                    </p>
+                    <p>
+                        Through our comprehensive programs, we've successfully:
+                    </p>
+                    <ul style="margin-left: 2rem; margin-bottom: 1.5rem;">
+                        <li style="margin-bottom: 0.7rem;">Improved educational outcomes for underprivileged children</li>
+                        <li style="margin-bottom: 0.7rem;">Enhanced healthcare accessibility in remote regions</li>
+                        <li style="margin-bottom: 0.7rem;">Created economic opportunities through skill development</li>
+                        <li style="margin-bottom: 0.7rem;">Promoted environmental sustainability</li>
+                        <li style="margin-bottom: 0.7rem;">Empowered marginalized communities</li>
+                    </ul>
+
+                    <div class="impact-stats">
+                        <div class="stat">
+                            <div class="stat-number">32,000+</div>
+                            <div class="stat-label">Lives Positively Impacted</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">15+</div>
+                            <div class="stat-label">Active Projects Running</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">50+</div>
+                            <div class="stat-label">Partner Communities</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">200+</div>
+                            <div class="stat-label">Dedicated Volunteers</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action Section -->
+    <section class="cta" id="contact">
+        <div class="container">
+            <h2>Join Our Mission</h2>
+            <p>Be part of the movement to create lasting change. Your support, whether through volunteering, donations, or partnerships, makes a real difference.</p>
+            <div class="cta-buttons">
+                <button class="btn-cta">Volunteer With Us</button>
+                <button class="btn-cta">Donate Now</button>
+                <button class="btn-cta">Partner With Us</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="footer">
+        <div class="footer-content">
+            <div class="footer-sections">
+                <div class="footer-section">
+                    <h4>About InAmigos</h4>
+                    <p>
+                        Dedicated to creating sustainable change through community-driven social initiatives and collaborative partnerships.
+                    </p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <a href="#about">About Us</a>
+                    <a href="#projects">Projects</a>
+                    <a href="#impact">Impact</a>
+                    <a href="#contact">Get Involved</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Us</h4>
+                    <p>Email: support@inamigosfoundation.org.in</p>
+                    <p>Phone: +91 626 730 9902</p>
+                    <p>Address: Ward No. 5, Gram Post, Sipat Ujwal Nagar, Bilaspur. Chhattisgarh - 495555</p>
+                </div>
+            </div>
+
+            <div class="social-links">
+                <a href="https://www.facebook.com/inamigos.inamigos" target="_blank" title="Facebook">f</a>
+                <a href="https://x.com/InamigosF" target="_blank" title="Twitter/X">𝕏</a>
+                <a href="https://in.linkedin.com/company/inamigos-foundation" target="_blank" title="LinkedIn">in</a>
+                <a href="https://www.instagram.com/inamigos/" target="_blank" title="Instagram">📷</a>
+                <a href="https://www.youtube.com/@inamigosfoundation" target="_blank" title="YouTube">▶</a>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2024 InAmigos - Making a Difference Together | All Rights Reserved</p>
+                <p>#InAmigos | Transparency • Accountability • Community</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
