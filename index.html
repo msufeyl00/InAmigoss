@@ -437,11 +437,13 @@
 
         .modal-content {
             background-color: white;
-            margin: 5% auto;
-            padding: 2rem;
+            margin: 2% auto;
+            padding: 1.5rem;
             border-radius: 10px;
             width: 90%;
             max-width: 600px;
+            max-height: 90vh;
+            overflow-y: auto;
             box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
             animation: slideUp 0.3s ease-out;
         }
@@ -461,14 +463,14 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
             border-bottom: 2px solid #667eea;
-            padding-bottom: 1rem;
+            padding-bottom: 0.8rem;
         }
 
         .modal-header h2 {
             color: #667eea;
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             margin: 0;
         }
 
@@ -487,22 +489,23 @@
 
         .qr-container {
             text-align: center;
-            margin: 2rem 0;
-            padding: 2rem;
+            margin: 1.5rem 0;
+            padding: 1.5rem;
             background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
             border-radius: 8px;
         }
 
         .qr-container img {
             max-width: 100%;
-            height: auto;
+            width: 250px;
+            height: 250px;
             border-radius: 8px;
             box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
         }
 
         .qr-info {
-            margin: 1.5rem 0;
-            padding: 1rem;
+            margin: 1rem 0;
+            padding: 0.8rem;
             background: white;
             border-radius: 6px;
             border-left: 4px solid #667eea;
@@ -538,7 +541,7 @@
         }
 
         .form-group {
-            margin: 1.5rem 0;
+            margin: 1rem 0;
         }
 
         .form-group label {
@@ -588,7 +591,7 @@
         .modal-actions {
             display: flex;
             gap: 1rem;
-            margin-top: 2rem;
+            margin-top: 1.5rem;
         }
 
         .modal-btn {
@@ -624,12 +627,13 @@
 
         .success-message {
             display: none;
-            padding: 1rem;
+            padding: 0.8rem;
             background: #d4edda;
             color: #155724;
             border-radius: 6px;
             margin-bottom: 1rem;
             border: 1px solid #c3e6cb;
+            font-size: 0.9rem;
         }
 
         /* Responsive Design */
@@ -709,8 +713,8 @@
         <h1>Making a Difference Together</h1>
         <p>InAmigos is committed to creating sustainable change through community-driven initiatives</p>
         <div class="hero-buttons">
-            <button class="btn btn-primary">Get Involved</button>
-            <button class="btn btn-secondary">Learn More</button>
+            <button class="btn btn-primary" onclick="scrollToSection('contact')">Get Involved</button>
+            <button class="btn btn-secondary" onclick="scrollToSection('projects')">Learn More</button>
         </div>
     </section>
 
@@ -869,9 +873,9 @@
             <h2>Join Our Mission</h2>
             <p>Be part of the movement to create lasting change. Your support, whether through volunteering, donations, or partnerships, makes a real difference.</p>
             <div class="cta-buttons">
-                <button class="btn-cta">Volunteer With Us</button>
+                <button class="btn-cta" onclick="openVolunteerModal()">Volunteer With Us</button>
                 <button class="btn-cta" onclick="openDonationModal()">Donate Now</button>
-                <button class="btn-cta">Partner With Us</button>
+                <button class="btn-cta" onclick="openPartnerModal()">Partner With Us</button>
             </div>
         </div>
     </section>
@@ -937,6 +941,104 @@
         </div>
     </div>
 
+    <!-- Volunteer Modal -->
+    <div id="volunteerModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Join Our Volunteer Team</h2>
+                <button class="close-btn" onclick="closeVolunteerModal()">&times;</button>
+            </div>
+            <p style="text-align: center; color: #666; margin-bottom: 1.5rem;">Be part of the change. Share your skills and passion to make a difference in people's lives.</p>
+            <form id="volunteerForm" onsubmit="handleVolunteerSubmit(event)">
+                <div class="form-group">
+                    <label for="volName">Your Name *</label>
+                    <input type="text" id="volName" name="volName" required placeholder="Enter your full name">
+                </div>
+                <div class="form-group">
+                    <label for="volEmail">Your Email *</label>
+                    <input type="email" id="volEmail" name="volEmail" required placeholder="Enter your email address">
+                </div>
+                <div class="form-group">
+                    <label for="volPhone">Phone Number *</label>
+                    <input type="tel" id="volPhone" name="volPhone" required placeholder="Enter your phone number">
+                </div>
+                <div class="form-group">
+                    <label for="volSkills">Your Skills/Area of Interest *</label>
+                    <textarea id="volSkills" name="volSkills" required placeholder="e.g., Teaching, Healthcare, Social Media, Event Management..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="volHours">Hours Available Per Week *</label>
+                    <input type="number" id="volHours" name="volHours" required placeholder="e.g., 5, 10, 15..." min="1" max="168">
+                </div>
+                <div class="form-group">
+                    <label for="volMessage">Why Do You Want to Volunteer? (Optional)</label>
+                    <textarea id="volMessage" name="volMessage" placeholder="Tell us your motivation..."></textarea>
+                </div>
+                <div class="modal-actions">
+                    <button type="submit" class="modal-btn btn-submit">Submit Application</button>
+                    <button type="button" class="modal-btn btn-cancel" onclick="closeVolunteerModal()">Cancel</button>
+                </div>
+            </form>
+            <div id="volunteerSuccess" class="success-message" style="display: none;">
+                <h3>🎉 Thank You for Your Interest!</h3>
+                <p>Your volunteer application has been received. We will contact you soon at the email and phone number you provided.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Partner Modal -->
+    <div id="partnerModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Partner With InAmigos</h2>
+                <button class="close-btn" onclick="closePartnerModal()">&times;</button>
+            </div>
+            <p style="text-align: center; color: #666; margin-bottom: 1.5rem;">Let's work together to create a bigger impact. We welcome corporate partnerships, NGO collaborations, and community initiatives.</p>
+            <form id="partnerForm" onsubmit="handlePartnerSubmit(event)">
+                <div class="form-group">
+                    <label for="partnerName">Your Name *</label>
+                    <input type="text" id="partnerName" name="partnerName" required placeholder="Enter your full name">
+                </div>
+                <div class="form-group">
+                    <label for="partnerOrganization">Organization/Company Name *</label>
+                    <input type="text" id="partnerOrganization" name="partnerOrganization" required placeholder="Enter organization name">
+                </div>
+                <div class="form-group">
+                    <label for="partnerEmail">Email *</label>
+                    <input type="email" id="partnerEmail" name="partnerEmail" required placeholder="Enter your email address">
+                </div>
+                <div class="form-group">
+                    <label for="partnerPhone">Phone Number *</label>
+                    <input type="tel" id="partnerPhone" name="partnerPhone" required placeholder="Enter your phone number">
+                </div>
+                <div class="form-group">
+                    <label for="partnerType">Partnership Type *</label>
+                    <select id="partnerType" name="partnerType" required style="padding: 0.7rem; border: 1px solid #ddd; border-radius: 5px; font-size: 1rem; width: 100%;">
+                        <option value="">-- Select Partnership Type --</option>
+                        <option value="corporate">Corporate Partnership</option>
+                        <option value="ngo">NGO Collaboration</option>
+                        <option value="community">Community Initiative</option>
+                        <option value="sponsor">Event Sponsorship</option>
+                        <option value="research">Research & Development</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="partnerProposal">Partnership Proposal/Details *</label>
+                    <textarea id="partnerProposal" name="partnerProposal" required placeholder="Describe your partnership proposal and how we can collaborate..."></textarea>
+                </div>
+                <div class="modal-actions">
+                    <button type="submit" class="modal-btn btn-submit">Submit Proposal</button>
+                    <button type="button" class="modal-btn btn-cancel" onclick="closePartnerModal()">Cancel</button>
+                </div>
+            </form>
+            <div id="partnerSuccess" class="success-message" style="display: none;">
+                <h3>🤝 Thank You for Your Interest!</h3>
+                <p>Your partnership proposal has been received. Our team will review it and contact you shortly to discuss collaboration opportunities.</p>
+            </div>
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer id="footer">
         <div class="footer-content">
@@ -994,14 +1096,6 @@
             document.getElementById('successMessage').style.display = 'none';
         }
 
-        // Close modal when clicking outside of it
-        window.onclick = function(event) {
-            const modal = document.getElementById('donationModal');
-            if (event.target == modal) {
-                closeDonationModal();
-            }
-        }
-
         // Preview image before upload
         function previewImage() {
             const file = document.getElementById('transactionScreenshot').files[0];
@@ -1021,27 +1115,174 @@
         function handleDonationSubmit(event) {
             event.preventDefault();
             
-            const data = {
-                name: document.getElementById('donorName').value,
-                email: document.getElementById('donorEmail').value,
-                amount: document.getElementById('donationAmount').value,
-                message: document.getElementById('message').value,
+            const screenshotFile = document.getElementById('transactionScreenshot').files[0];
+            
+            if (!screenshotFile) {
+                alert('Please upload a transaction screenshot');
+                return;
+            }
+
+            // Create FormData to send file and form data
+            const formData = new FormData();
+            formData.append('name', document.getElementById('donorName').value);
+            formData.append('email', document.getElementById('donorEmail').value);
+            formData.append('amount', document.getElementById('donationAmount').value);
+            formData.append('message', document.getElementById('message').value);
+            formData.append('screenshot', screenshotFile);
+
+            // Show loading state
+            const submitBtn = document.querySelector('.btn-submit');
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = 'Processing...';
+            submitBtn.disabled = true;
+
+            // Send to server
+            fetch('http://localhost:3000/api/donate', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    console.log('✅ Donation submitted successfully:', data);
+                    
+                    // Show success message
+                    document.getElementById('successMessage').style.display = 'block';
+                    document.getElementById('donationForm').style.display = 'none';
+
+                    // Auto-close modal after 3 seconds
+                    setTimeout(() => {
+                        closeDonationModal();
+                        document.getElementById('donationForm').style.display = 'block';
+                        document.getElementById('successMessage').style.display = 'none';
+                        
+                        // Reset form
+                        document.getElementById('donationForm').reset();
+                        document.getElementById('imagePreview').innerHTML = '';
+                        
+                        // Reset button
+                        submitBtn.textContent = originalText;
+                        submitBtn.disabled = false;
+                    }, 3000);
+                } else {
+                    alert('Error: ' + data.message);
+                    submitBtn.textContent = originalText;
+                    submitBtn.disabled = false;
+                }
+            })
+            .catch(error => {
+                console.error('Error submitting donation:', error);
+                alert('Error connecting to server. Make sure the server is running on http://localhost:3000');
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+            });
+        }
+
+        // Smooth scroll to section
+        function scrollToSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            if (section) {
+                section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+
+        // Volunteer Modal Functions
+        function openVolunteerModal() {
+            const modal = document.getElementById('volunteerModal');
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeVolunteerModal() {
+            const modal = document.getElementById('volunteerModal');
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+            document.getElementById('volunteerForm').reset();
+            document.getElementById('volunteerSuccess').style.display = 'none';
+            document.getElementById('volunteerForm').style.display = 'block';
+        }
+
+        function handleVolunteerSubmit(event) {
+            event.preventDefault();
+            
+            const volunteerData = {
+                name: document.getElementById('volName').value,
+                email: document.getElementById('volEmail').value,
+                phone: document.getElementById('volPhone').value,
+                skills: document.getElementById('volSkills').value,
+                hours: document.getElementById('volHours').value,
+                message: document.getElementById('volMessage').value,
                 timestamp: new Date().toISOString()
             };
 
-            // Log donation data (in production, send to server)
-            console.log('Donation Received:', data);
-            console.log('Screenshot file:', document.getElementById('transactionScreenshot').files[0]);
-
+            console.log('✅ Volunteer Application Received:', volunteerData);
+            
             // Show success message
-            document.getElementById('successMessage').style.display = 'block';
-            document.getElementById('donationForm').style.display = 'none';
+            document.getElementById('volunteerSuccess').style.display = 'block';
+            document.getElementById('volunteerForm').style.display = 'none';
 
             // Auto-close modal after 3 seconds
             setTimeout(() => {
-                closeDonationModal();
-                document.getElementById('donationForm').style.display = 'block';
+                closeVolunteerModal();
             }, 3000);
+        }
+
+        // Partner Modal Functions
+        function openPartnerModal() {
+            const modal = document.getElementById('partnerModal');
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closePartnerModal() {
+            const modal = document.getElementById('partnerModal');
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+            document.getElementById('partnerForm').reset();
+            document.getElementById('partnerSuccess').style.display = 'none';
+            document.getElementById('partnerForm').style.display = 'block';
+        }
+
+        function handlePartnerSubmit(event) {
+            event.preventDefault();
+            
+            const partnerData = {
+                name: document.getElementById('partnerName').value,
+                organization: document.getElementById('partnerOrganization').value,
+                email: document.getElementById('partnerEmail').value,
+                phone: document.getElementById('partnerPhone').value,
+                type: document.getElementById('partnerType').value,
+                proposal: document.getElementById('partnerProposal').value,
+                timestamp: new Date().toISOString()
+            };
+
+            console.log('✅ Partnership Proposal Received:', partnerData);
+            
+            // Show success message
+            document.getElementById('partnerSuccess').style.display = 'block';
+            document.getElementById('partnerForm').style.display = 'none';
+
+            // Auto-close modal after 3 seconds
+            setTimeout(() => {
+                closePartnerModal();
+            }, 3000);
+        }
+
+        // Close modals when clicking outside
+        window.onclick = function(event) {
+            const donationModal = document.getElementById('donationModal');
+            const volunteerModal = document.getElementById('volunteerModal');
+            const partnerModal = document.getElementById('partnerModal');
+            
+            if (event.target == donationModal) {
+                closeDonationModal();
+            }
+            if (event.target == volunteerModal) {
+                closeVolunteerModal();
+            }
+            if (event.target == partnerModal) {
+                closePartnerModal();
+            }
         }
     </script>
 </body>
