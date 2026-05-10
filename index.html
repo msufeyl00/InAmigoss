@@ -234,6 +234,266 @@
             margin-bottom: 1rem;
         }
 
+        /* Featured Projects Section */
+        .featured-projects {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, #f8f9fa 0%, #f0f1ff 100%);
+        }
+
+        .featured-projects h2 {
+            text-align: center;
+            color: #667eea;
+            margin-bottom: 0.5rem;
+            font-size: 2.5rem;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 3rem;
+            font-size: 1.1rem;
+        }
+
+        .featured-project {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 4rem;
+            align-items: center;
+            background: white;
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.1);
+            border-left: 5px solid #667eea;
+        }
+
+        .featured-project-alt {
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .featured-project-alt .featured-project-image {
+            order: -1;
+        }
+
+        .featured-project-content h3 {
+            color: #667eea;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+
+        .featured-project-content p {
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+            font-size: 1rem;
+        }
+
+        .highlight-text {
+            font-size: 1.1rem;
+            color: #764ba2;
+            font-weight: 600;
+            margin-bottom: 1rem !important;
+        }
+
+        .project-stats {
+            display: flex;
+            gap: 2rem;
+            margin: 2rem 0;
+            padding: 1.5rem;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+
+        .stat-item {
+            text-align: center;
+            flex: 1;
+        }
+
+        .stat-item strong {
+            display: block;
+            font-size: 1.8rem;
+            color: #667eea;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-item span {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .funding-goal {
+            margin: 2rem 0;
+            padding: 1.5rem;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+
+        .goal-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            font-weight: 600;
+            color: #667eea;
+        }
+
+        .goal-amount {
+            font-size: 1.3rem;
+        }
+
+        .progress-bar {
+            height: 8px;
+            background: #ddd;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 0.5rem;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            border-radius: 10px;
+            transition: width 0.5s ease;
+        }
+
+        .progress-text {
+            font-size: 0.9rem;
+            color: #666;
+            margin: 0;
+        }
+
+        .ways-to-help {
+            list-style: none;
+            margin: 1.5rem 0;
+            padding: 0;
+        }
+
+        .ways-to-help li {
+            padding: 0.7rem 0;
+            color: #555;
+            font-size: 1rem;
+        }
+
+        .ways-to-help li:before {
+            content: "✓ ";
+            color: #667eea;
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+
+        .initiatives-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .initiative-item {
+            text-align: center;
+            padding: 1.5rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 10px;
+            transition: transform 0.3s;
+        }
+
+        .initiative-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .init-icon {
+            font-size: 2rem;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .initiative-item p {
+            font-size: 0.95rem;
+            margin: 0;
+        }
+
+        .featured-project-image {
+            position: relative;
+        }
+
+        .image-placeholder {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.3rem;
+            border-radius: 10px;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .image-placeholder.dark {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+        }
+
+        .featured-cta {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            margin-top: 1rem;
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .featured-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.5);
+        }
+
+        .featured-cta:active {
+            transform: translateY(-1px);
+        }
+
+        /* Responsive Featured Projects */
+        @media (max-width: 768px) {
+            .featured-project {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                padding: 2rem;
+            }
+
+            .featured-project-alt {
+                grid-template-columns: 1fr;
+            }
+
+            .featured-project-alt .featured-project-image {
+                order: 0;
+            }
+
+            .featured-projects h2 {
+                font-size: 2rem;
+            }
+
+            .featured-project-content h3 {
+                font-size: 1.4rem;
+            }
+
+            .initiatives-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .project-stats {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .image-placeholder {
+                height: 250px;
+            }
+        }
+
         /* Impact Section */
         .impact {
             padding: 5rem 0;
@@ -741,80 +1001,194 @@
         </div>
     </section>
 
+    <!-- Featured Project Spotlight Section -->
+    <section class="featured-projects" id="featured-projects">
+        <div class="container">
+            <h2>Featured Projects</h2>
+            <p class="section-subtitle">These initiatives are making immediate impact in our communities</p>
+            
+            <!-- Featured Project 1: BachpanShala -->
+            <div class="featured-project">
+                <div class="featured-project-content">
+                    <h3>Support Project BachpanShala</h3>
+                    <p class="highlight-text">Help us educate, empower, and transform the lives of underprivileged children across India.</p>
+                    <p>Your donation enables access to quality education, digital literacy, and essential life skills for kids in slum communities. Together, we can build brighter futures—one child at a time.</p>
+                    <div class="project-stats">
+                        <div class="stat-item">
+                            <strong>5,000+</strong>
+                            <span>Students Reached</span>
+                        </div>
+                        <div class="stat-item">
+                            <strong>50+</strong>
+                            <span>Communities</span>
+                        </div>
+                    </div>
+                    <button class="featured-cta" onclick="openDonationModal()">🎁 Donate Now</button>
+                </div>
+                <div class="featured-project-image">
+                    <!-- Placeholder for BachpanShala community photos -->
+                    <div class="image-placeholder">📸 Community Education Photos</div>
+                </div>
+            </div>
+
+            <!-- Featured Project 2: Education Initiative -->
+            <div class="featured-project featured-project-alt">
+                <div class="featured-project-image featured-image-alt">
+                    <!-- Placeholder for child success stories -->
+                    <div class="image-placeholder dark">📷 Student Success Stories</div>
+                </div>
+                <div class="featured-project-content">
+                    <h3>Education is the Backbone of Society ❤️</h3>
+                    <p class="highlight-text">Learning is their right, not a privilege.</p>
+                    <p>Education breaks cycles of poverty and creates opportunities. When we invest in education today, we invest in a brighter, more inclusive tomorrow. Your support helps us bring classrooms to the streets and dreams into young minds.</p>
+                    <div class="funding-goal">
+                        <div class="goal-header">
+                            <span>Current Goal</span>
+                            <span class="goal-amount">₹50,000</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 65%;"></div>
+                        </div>
+                        <p class="progress-text">₹32,500 of ₹50,000 raised</p>
+                    </div>
+                    <button class="featured-cta" onclick="openDonationModal()">💝 Help Reach Our Goal</button>
+                </div>
+            </div>
+
+            <!-- Featured Project 3: Volunteer Appeal -->
+            <div class="featured-project">
+                <div class="featured-project-content">
+                    <h3>Become a Change Maker</h3>
+                    <p class="highlight-text">"Helping others is the secret sauce to a happy life."</p>
+                    <p>We provide a platform for all kinds of talents and people in need. Whether you can offer your skills, time, or compassion, your involvement matters. All that's missing is YOU!</p>
+                    <ul class="ways-to-help">
+                        <li>💼 Contribute your professional skills</li>
+                        <li>⏰ Volunteer your time (flexible hours)</li>
+                        <li>💡 Share your expertise with communities</li>
+                        <li>🤝 Build relationships and make real connections</li>
+                    </ul>
+                    <button class="featured-cta" onclick="openVolunteerModal()">🙋 Join Our Team</button>
+                </div>
+                <div class="featured-project-image">
+                    <div class="image-placeholder">🎯 Volunteers Making Impact</div>
+                </div>
+            </div>
+
+            <!-- Featured Project 4: Multi-Initiative -->
+            <div class="featured-project featured-project-alt">
+                <div class="featured-project-image featured-image-alt">
+                    <div class="image-placeholder dark">🏠 Home | 📚 Education | 🍲 Food</div>
+                </div>
+                <div class="featured-project-content">
+                    <h3>Join Our Community for Helping Needy People</h3>
+                    <p class="highlight-text">Through your donation, we can create a brighter future for children.</p>
+                    <p>We focus on protecting and supporting children growing up with challenges, helping children find safe homes, and ensuring nutritious food for growth and learning. Your contribution directly impacts these core areas of care.</p>
+                    <div class="initiatives-grid">
+                        <div class="initiative-item">
+                            <span class="init-icon">🏠</span>
+                            <p><strong>Home</strong><br>Safe, caring environment</p>
+                        </div>
+                        <div class="initiative-item">
+                            <span class="init-icon">📚</span>
+                            <p><strong>Education</strong><br>Quality learning access</p>
+                        </div>
+                        <div class="initiative-item">
+                            <span class="init-icon">🍲</span>
+                            <p><strong>Food</strong><br>Nutritious meals daily</p>
+                        </div>
+                    </div>
+                    <button class="featured-cta" onclick="openDonationModal()">❤️ Make a Difference</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Projects Section -->
     <section class="projects" id="projects">
         <div class="container">
             <h2>Our Ongoing Projects</h2>
             <div class="projects-grid">
-                <!-- Project 1 -->
+                <!-- Project 1: Education/BachpanShala -->
                 <div class="project-card">
-                    <div class="project-image">📚</div>
+                    <div class="project-image">📚 Education</div>
                     <div class="project-content">
-                        <h3>Education Access Initiative</h3>
+                        <h3>BachpanShala - Education Initiative</h3>
                         <p>
-                            We provide quality education and learning resources to underprivileged children. Our program focuses on basic literacy, numeracy, and digital skills to empower the next generation.
+                            Transforming lives through quality education. We provide digital literacy, essential life skills, and academic support to underprivileged children. Our comprehensive program ensures every child has access to learning opportunities.
                         </p>
-                        <strong>Status:</strong> Active | <strong>Reach:</strong> 5,000+ Students
+                        <strong>📈 Reach:</strong> 5,000+ Students<br>
+                        <strong>🎯 Status:</strong> Active & Growing<br>
+                        <strong>💡 Impact:</strong> Breaking poverty cycles through education
                     </div>
                 </div>
 
-                <!-- Project 2 -->
+                <!-- Project 2: Healthcare -->
                 <div class="project-card">
-                    <div class="project-image">🏥</div>
+                    <div class="project-image">🏥 Health</div>
                     <div class="project-content">
                         <h3>Healthcare & Wellness Program</h3>
                         <p>
-                            Providing accessible healthcare services to remote and underserved communities. We conduct medical camps, awareness programs, and health checkups.
+                            Accessible healthcare for all. We conduct medical camps, preventive health awareness, and regular health checkups in underserved communities to ensure better health outcomes.
                         </p>
-                        <strong>Status:</strong> Active | <strong>Reach:</strong> 8,000+ Beneficiaries
+                        <strong>📈 Reach:</strong> 8,000+ Beneficiaries<br>
+                        <strong>🎯 Status:</strong> Active & Expanding<br>
+                        <strong>💡 Impact:</strong> Saving lives through preventive care
                     </div>
                 </div>
 
-                <!-- Project 3 -->
+                <!-- Project 3: Environment -->
                 <div class="project-card">
-                    <div class="project-image">🌱</div>
+                    <div class="project-image">🌱 Environment</div>
                     <div class="project-content">
                         <h3>Environmental Conservation</h3>
                         <p>
-                            Dedicated to protecting our environment through tree plantation, waste management, and sustainable living awareness programs.
+                            Protecting our planet for future generations. Through tree plantation, waste management, and sustainability awareness, we create a greener, cleaner environment.
                         </p>
-                        <strong>Status:</strong> Active | <strong>Reach:</strong> 10,000+ Trees Planted
+                        <strong>📈 Reach:</strong> 10,000+ Trees Planted<br>
+                        <strong>🎯 Status:</strong> Active & Thriving<br>
+                        <strong>💡 Impact:</strong> Building sustainable communities
                     </div>
                 </div>
 
-                <!-- Project 4 -->
+                <!-- Project 4: Skill Development -->
                 <div class="project-card">
-                    <div class="project-image">💼</div>
+                    <div class="project-image">💼 Skills</div>
                     <div class="project-content">
                         <h3>Skill Development & Employment</h3>
                         <p>
-                            Empowering youth with vocational training and employment opportunities. We provide skills training in various sectors to create economic independence.
+                            Empowering youth with in-demand vocational skills. We provide industry-relevant training and job placement support to create economic independence and opportunity.
                         </p>
-                        <strong>Status:</strong> Active | <strong>Reach:</strong> 3,500+ Trained Individuals
+                        <strong>📈 Reach:</strong> 3,500+ Trained Individuals<br>
+                        <strong>🎯 Status:</strong> Active & Successful<br>
+                        <strong>💡 Impact:</strong> Transforming unemployed to employed
                     </div>
                 </div>
 
-                <!-- Project 5 -->
+                <!-- Project 5: Women Empowerment -->
                 <div class="project-card">
-                    <div class="project-image">👩‍👧‍👦</div>
+                    <div class="project-image">👩‍👧‍👦 Women</div>
                     <div class="project-content">
                         <h3>Women Empowerment Program</h3>
                         <p>
-                            Promoting gender equality through education, self-help groups, and economic empowerment initiatives for women in underserved areas.
+                            Championing gender equality and women's rights. Through education, self-help groups, and economic initiatives, we enable women to lead independent, dignified lives.
                         </p>
-                        <strong>Status:</strong> Active | <strong>Reach:</strong> 4,000+ Women Beneficiaries
+                        <strong>📈 Reach:</strong> 4,000+ Women Beneficiaries<br>
+                        <strong>🎯 Status:</strong> Active & Growing<br>
+                        <strong>💡 Impact:</strong> Empowering leaders and changemakers
                     </div>
                 </div>
 
-                <!-- Project 6 -->
+                <!-- Project 6: Scholarship & Mentorship -->
                 <div class="project-card">
-                    <div class="project-image">🎓</div>
+                    <div class="project-image">🎓 Scholarships</div>
                     <div class="project-content">
-                        <h3>Scholarship & Mentorship</h3>
+                        <h3>Scholarship & Mentorship Program</h3>
                         <p>
-                            Offering scholarships and mentoring to deserving students from underprivileged backgrounds, helping them achieve their educational goals.
+                            Nurturing tomorrow's leaders. We provide merit-based scholarships and personalized mentorship to talented students from underprivileged backgrounds.
                         </p>
-                        <strong>Status:</strong> Active | <strong>Reach:</strong> 1,500+ Scholars
+                        <strong>📈 Reach:</strong> 1,500+ Scholars Supported<br>
+                        <strong>🎯 Status:</strong> Active & Supportive<br>
+                        <strong>💡 Impact:</strong> Creating pathways to success
                     </div>
                 </div>
             </div>
